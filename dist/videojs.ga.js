@@ -29,6 +29,7 @@
     seeking = false;
     loaded = function() {
       eventLabel = this.currentSrc().split("/").slice(-1)[0];
+      percentsAlreadyTracked = [0];
       console.log('eventLabel:', eventLabel);
       if (__indexOf.call(eventsToTrack, "loadedmetadata") >= 0) {
         sendbeacon('loadedmetadata', true);
