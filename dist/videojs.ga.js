@@ -1,6 +1,6 @@
 /*
-* videojs-ga - v0.4.2 - 2015-02-06
-* Copyright (c) 2015 Michael Bensoussan
+* videojs-ga - v0.4.2 - 2016-12-21
+* Copyright (c) 2016 Michael Bensoussan
 * Licensed MIT
 */
 (function() {
@@ -28,9 +28,7 @@
     seekStart = seekEnd = 0;
     seeking = false;
     loaded = function() {
-      if (!eventLabel) {
-        eventLabel = this.currentSrc().split("/").slice(-1)[0].replace(/\.(\w{3,4})(\?.*)?$/i, '');
-      }
+      eventLabel = this.currentSrc().split("/").slice(-1)[0];
       if (__indexOf.call(eventsToTrack, "loadedmetadata") >= 0) {
         sendbeacon('loadedmetadata', true);
       }
