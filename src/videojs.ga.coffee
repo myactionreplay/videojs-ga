@@ -34,9 +34,11 @@ videojs.plugin 'ga', (options = {}) ->
   seeking = false
 
   loaded = ->
-    unless eventLabel
-      eventLabel = @currentSrc().split("/").slice(-1)[0].replace(/\.(\w{3,4})(\?.*)?$/i,'')
-
+    
+    # always refresh the eventLabel (possible src change)
+    eventLabel = @currentSrc().split("/").slice(-1)[0]
+    percentsAlreadyTracked = [0]
+    console.log('eventLabel:', eventLabel)
     if "loadedmetadata" in eventsToTrack
       sendbeacon( 'loadedmetadata', true )
 
